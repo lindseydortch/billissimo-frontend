@@ -12,12 +12,19 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as PaycheckPlannerIndexImport } from './routes/paycheck-planner/index'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const PaycheckPlannerIndexRoute = PaycheckPlannerIndexImport.update({
+  id: '/paycheck-planner/',
+  path: '/paycheck-planner/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -32,6 +39,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/paycheck-planner/': {
+      id: '/paycheck-planner/'
+      path: '/paycheck-planner'
+      fullPath: '/paycheck-planner'
+      preLoaderRoute: typeof PaycheckPlannerIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +53,37 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/paycheck-planner': typeof PaycheckPlannerIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/paycheck-planner': typeof PaycheckPlannerIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/paycheck-planner/': typeof PaycheckPlannerIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/paycheck-planner'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/paycheck-planner'
+  id: '__root__' | '/' | '/paycheck-planner/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PaycheckPlannerIndexRoute: typeof PaycheckPlannerIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PaycheckPlannerIndexRoute: PaycheckPlannerIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +96,15 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/paycheck-planner/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/paycheck-planner/": {
+      "filePath": "paycheck-planner/index.tsx"
     }
   }
 }

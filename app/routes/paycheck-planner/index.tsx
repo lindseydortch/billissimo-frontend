@@ -25,7 +25,7 @@ const updateCount = createServerFn({ method: "POST" })
     await fs.promises.writeFile(filePath, `${count + data}`);
   });
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/paycheck-planner/")({
   component: Home,
   loader: async () => await getCount()
 });
@@ -45,7 +45,7 @@ function Home() {
         }}>
         Add 1 to {state}?
       </button>
-      <Link to="/paycheck-planner">Paycheck Planner</Link>
+      <Link to="/">Home</Link>
     </>
   );
 }
