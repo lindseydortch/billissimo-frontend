@@ -1,1 +1,52 @@
-# billissimo-frontend
+# Billissimo - A Bill Tracking and Paycheck Planning Application 
+
+## Requirements 
+- Sign up and login as a user 
+- Bill Tracking 
+  - CRUD a bill 
+  - Bills
+    - All Bills with the ability to sort by: 
+      - Due Date 
+      - Amount 
+      - Paid? 
+      - Cycle
+      - Category 
+    - Total Amount for Month 
+    - Total Amount of all bills for the year 
+    - If a user didn't pay a bill within the paycheck timeframe then that bill needs to be added to the next paycheck cycle or doubled for the next month 
+  - Bill 
+    - Name
+    - Amount
+    - Date Due 
+    - Frequency
+    - Categories: 
+      - Subscription 
+        - Also ability to split Subscriptions for business or personal or maybe even for streaming, etc. 
+        - Frequency i.e. annual, quarterly, etc. 
+      - Fixed 
+    - Paid for the month 
+      - Date Paid 
+    - Account The Bill Comes Out Of 
+    - Active or Inactive
+    - Yearly Cost Added Up 
+  - Paycheck Planner 
+    - A user will input the next time they get paid and then how ofter they get paid 
+      - Example: I get paid every two weeks with my next paycheck being 2/21/25, so once I input the next pay date it will set the pay date for every two weeks going forward without me having to keep inputting the date 
+    - Bills due in that pay period with the total amount due (also with the ability to sort)
+    - Ability to input a paycheck amount and will subtract the amount of bills due from the paycheck amount and tell the user how much is leftover aftet they pay all of their bills in that paycheck 
+  - Subscription Tracker 
+    - A view specifically for just the subscriptions so the user can get an idea of how much their spending per month or year on subscriptions 
+    - If per month it will include annual or quarterly subscriptions into the cost for the month just to view 
+    - The ability to just see how much annual subscriptions are costing 
+  - If a user didn't pay a bill within the paycheck timeframe then that bill needs to be added to the next paycheck cycle or doubled for the next month 
+
+## Features + Pages 
+- Feature Categories + Pages 
+  - Authentication 
+    - /signup & /login
+  - User - /user
+    - /account - able to update paycheck dates and payouts 
+  - Bills Tracker - /dashboard -- will be homepage once user is logged in 
+  - Bill - /tracker -- bills will be editable in a modal or within the table row 
+  - Paycheck Planner - /planner 
+  - Subscriptions Hub - /subscriptions 
