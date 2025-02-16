@@ -3,6 +3,7 @@ import * as fs from "node:fs";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/start";
 import { Link } from "@tanstack/react-router";
+import Dashboard from "@/components/Dashboard";
 
 const filePath = "count.txt";
 
@@ -36,16 +37,8 @@ function Home() {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => {
-          updateCount({ data: 1 }).then(() => {
-            router.invalidate();
-          });
-        }}>
-        Add 1 to {state}?
-      </button>
       <Link to="/paycheck-planner">Paycheck Planner</Link>
+      <Dashboard />
     </>
   );
 }
